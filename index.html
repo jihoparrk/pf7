@@ -5,34 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>(주)윤현몰</title>
+    <!-- reset -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
+    <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- css -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/title.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
-    <script>
-        $(function(){
+    <!-- slick -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-arrow.css">
+    <script type="text/javascript" src="js/slick.min.js"></script>
 
-            //PC일 때의 햄버거 버튼 표시
+    <!--  PC일 때의 햄버거 버튼 표시  -->
+    <!-- <script>
+        $(function(){
             $("header .navbar-collapse ul:eq(0) li:eq(0)").remove();
             $("header .navbar-header button").clone().prependTo("header .navbar-collapse ul:eq(0)");
             $("header .navbar-collapse ul:eq(0) button").css({"dlsplay":"block","float":"right"});
         });
-    </script>
+    </script> -->
 <!-- slick start------------------------------------------------------------------------------------------------------>
-    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
-    <link rel="stylesheet" type="text/css" href="css/slick-arrow.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <script type="text/javascript" src="js/slick.min.js"></script>
     <script>
         $(function(){
             $('.tslide').slick({
@@ -40,9 +43,9 @@
                 infinite: true,
                 speed: 2000,
                 slidesToShow: 1,
-                adaptiveHeight: true,
+                // adaptiveHeight: true,
                 arrows:true,
-                autoplay: true,
+                autoplay: false,
                 autoplaySpeed: 2000
             });
         });
@@ -115,15 +118,15 @@
 
 <!-- 스크롤이벤트 aos ------------------------------------------------------------------------------------------------->
 <link href="css/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/aos.js"></script>
 <!-- 추천상품 진행바-->
     <script>
         $(function(){
     
-            $(".product,span.more").wrapAll("<div class='wproduct' data-aos='fade-down'></div>");
-            $(".product").css({"display":"flex","flex-direction":"column-reverse"});
-            $("#recommand .more").appendTo("#recommand hgroup");
-            $("#recommand hgrpup").appendTo("data-aos","fade-up");
+            // $(".product,span.more").wrapAll("<div class='wproduct' data-aos='fade-down'></div>");
+            // $(".product").css({"display":"flex","flex-direction":"column-reverse"});
+            // $("#recommand .more").appendTo("#recommand hgroup");
+            // $("#recommand hgrpup").appendTo("data-aos","fade-up");
             $("#recommand .container").append("<span class='progressbar'></span>");
             /*
             $("button.slick-arrow.slick-next").click(function(){
@@ -132,6 +135,7 @@
             $("button.slick-arrow.slick-prev").click(function(){
                 $(".progressbar").removeClass("full");
             */   
+// 살려야한다
             $("#recommand button.slick-arrow").click(function(){
                 if($(this).has(".slick-next")){
                     //$(".progressbar").addClass("full");
@@ -147,6 +151,7 @@
                     cc--;
                 }
             });
+// 여기까지
             // v1
             // var p;
             // var pBar = setInterval(pb,0);
@@ -215,10 +220,10 @@
     </script>    
 
 <!-- 모바일버전에서 aos 작동안되게 하기 -------------------------------------------------------------------------------->
-<script>
+<!-- <script>
     $(function(){
+        AOS.init();
         if($(window).width()>767){
-            AOS.init();
             $("body").attr("data-aos-duration","1400");
             $("#recommand hgroup").attr("data-aos","fade-up");
             $("#recommand .wproduct").attr("data-aos","fade-down");
@@ -229,7 +234,7 @@
             $("#recommand .wproduct").attr("data-aos","");
         }
     });
-</script>
+</script> -->
 <!-- ----------------------------------------------------------------------------------------------------------->
     <script>
         $(function(){
@@ -294,7 +299,7 @@
                 interV =  setInterval(fn,0);
             });
 //페이드인 되는 설명글 번호 배치 .count
-            $(".wtleft").prepend("<div class='count'><span class='ccount'></span><span> / </span><span class='tcount'></span></div>");
+            $(".wtleft").prepend("<div class='count'><span class='ccount'></span><span> - </span><span class='tcount'></span></div>");
             $(".ccount").text(dnumber);
             $(".tcount").text($(".slick-dots li").length);
         });
@@ -309,26 +314,20 @@
             <div class="container">
                 <div class="navbar-header">
                     <h1 class="navbar-brand"><a href="">YOUNHYUN MALL</a></h1>
-                    <button type="button" class="navbar-toggle collapsed">
-                        <span class="sr-only">메뉴 보기</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="">전체메뉴</a></li>
+                <div class="navwrap">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href=""><span>전체메뉴</span></a></li>
                         <li><a href="">추천제품</a></li>
                         <li><a href="">신제품</a></li>
                         <li><a href="">이벤트</a></li>
-                        <li><a href="">PREMIUM</a></li>
+                        <!-- <li><a href="">PREMIUM</a></li> -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="">LOGIN</a></li>
                         <li><a href="">JOIN</a></li>
                         <li><a href="">CART</a></li>
-                        <li><button>검색</button></li>
+                        <li><a href=""><span class="glyphicon glyphicon-search" role="search"></a></span></li>
                     </ul>
                 </div>
             </div>
@@ -339,27 +338,27 @@
         <div class="container wrap">
             <ul class="tslide">
                 <li class="tslist t1">
-                    <img src="img/title-1.jpg" class="img-responsive img-rounded" alt="">
+                    <img src="img/title-1.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft1">
                         <h2 class="h2">MOONSTONE WHITE</h2>
-                        <p class="p">자연스러운 스톤 패턴과 견고함, 문스톤 화이트<span class="block">@inter.housing</span></p>
-                        <a href="" class="more btn btn-default">more</a>
+                        <p class="p">자연스러운 스톤 패턴과 견고함, 문스톤 화이트</p>
+                        <a href="" class="more">more</a>
                     </div>
                 </li>
                 <li class="tslist t2">
-                    <img src="img/title-2.jpg" class="img-responsive img-rounded" alt="">
+                    <img src="img/title-2.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft2">
-                        <h2 class="h2">GROUND WALL<span class="block">LIGHT TIP</span></h2>
-                        <p class="p">포인트로 사용하기 좋은 입체타일, 그라운드 월 라이트 팁<span class="block">@chameleon_hyun</span></p>
-                        <a href="" class="more btn btn-default">more</a>
+                        <h2 class="h2">GROUND WALL LIGHT TIP</span></h2>
+                        <p class="p">포인트로 사용하기 좋은 입체타일, 그라운드 월 라이트 팁</p>
+                        <a href="" class="">more</a>
                     </div>
                 </li>
                 <li class="tslist t3">
-                    <img src="img/title-3.jpg" class="img-responsive img-rounded" alt="">
+                    <img src="img/title-3.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft3">
                         <h2 class="h2">NST IVORY</h2>
-                        <p class="p">천연석을 그대로 담은듯한 표면, 엔에스티 아이보리<span class="block">@flip_official_</span></p>
-                        <a href="" class="more btn btn-default">more</a>
+                        <p class="p">천연석을 그대로 담은듯한 표면, 엔에스티 아이보리</p>
+                        <a href="" class="">more</a>
                     </div>
                 </li>
                 
@@ -367,16 +366,16 @@
                     <img src="img/title-4.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft4">
                         <h2 class="h2">MOONSTONE WHITE</h2>
-                        <p class="p">자연스러운 스톤 패턴과 견고함, 문스톤 화이트<span class="block">@inter.housing</span></p>
-                        <a href="" class="more btn btn-default">more</a>
+                        <p class="p">자연스러운 스톤 패턴과 견고함, 문스톤 화이트</p>
+                        <a href="" class="">more</a>
                     </div>
                 </li>
                 <li class="tslist t5">
-                    <img src="img/title-5.jpg" class="img-responsive img-rounded" alt="">
+                    <img src="img/title-5.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft5">
                         <h2 class="h2">TUNE SNOW SOFT</h2>
-                        <p class="p">눈처럼 부드러운 색과 표면, 튠스노우 소프트<span class="block">@foundation.work</span></p>
-                        <a href="" class="more btn btn-default">more</a>
+                        <p class="p">눈처럼 부드러운 색과 표면, 튠스노우 소프트</p>
+                        <a href="" class="">more</a>
                     </div>
                 </li>
             </ul>
@@ -387,11 +386,14 @@
         <!-- 추천상품 -->
         <section id="recommand" class="padding-40">
             <div class="wrap container" >
-                <hgroup>
+                <hgroup class="data-aos="fade-down>
                     <h2 class="h2 text-center">RECOMMEND PRODUCTS</h2>
                     <h3 class="h3 text-center">윤현상재가 선정한 추천제품</h3>
+                    <span class="more">
+                        <a href="" class="">MORE</a>
+                    </span>
                 </hgroup>
-                <ul class="product text-center" data-aos="zoom-in">
+                <ul class="product text-center">
                     <li>
                         <a href="" class="block">
                             <img src="img/re1.jpg" class="img-responsive" alt="퓨어 스톤 화이트">
@@ -457,9 +459,6 @@
                         </a>
                     </li>
                 </ul>
-                <span class="more">
-                    <a href="" class="btn btn-primary" a="role">MORE</a>
-                </span>
             </div>
         </section>    
         <!-- 타일샘플 -->
