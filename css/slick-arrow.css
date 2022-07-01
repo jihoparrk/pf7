@@ -7,11 +7,11 @@ button.slick-arrow{
 /*     background-color: #fff; */
 }
 button.slick-arrow.slick-prev{
-    left: -50px;
+    left: -80px;
     border-radius: 0 10px 10px 0;
 }
 button.slick-arrow.slick-next{
-    right: -50px;
+    right: -80px;
     border-radius: 10px 0 0 10px;
 }
 button.slick-arrow::before{
@@ -20,7 +20,7 @@ button.slick-arrow::before{
     width: 20px;
     height: 20px;
     display: block;
-    border: 3px solid #555;
+    border: 2px solid #555;
     border-bottom:transparent;
     border-left:transparent;    
 } 

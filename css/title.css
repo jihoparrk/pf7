@@ -3,12 +3,12 @@
   margin: 0 auto;
 }
 #title .container{
-  padding: 0 20px;
+  margin-top: 100px;
   position: relative;
 }
 #title .tslist{
   position: relative;
-  padding-left: 80px;
+  padding-left: 280px;
   padding-right: 0;
 }
 #title .tslist .tleft{
@@ -21,9 +21,8 @@
   justify-content: center; */
 }
 #title .wtleft{
-  
   position: absolute;
-  left: 60px;
+  left: 0;
   top: 0;
   height: 100%;
 }
@@ -31,13 +30,37 @@
   position: absolute;
   left: 0;
   top: 0;
+  width: max-content;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-/*   display: none; */
+/*! display: none; */
   transition: all 1s;
   opacity: 0;
+}
+#title .wtleft .tleft p{
+  line-height: 5;
+  margin-bottom: 40px;
+}
+#title .wtleft .tleft a{
+  width: 150px;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid;
+  color: #999;
+  line-height: 2.5;
+  letter-spacing: 3px;
+}
+#title .wtleft .tleft a::after{
+  content: "";
+  border: 1px solid #999;
+  border-left: transparent;
+  border-bottom: transparent;
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  transform: rotate(45deg);
 }
 .tleftShow{
   opacity: 1 !important;
@@ -59,9 +82,30 @@
   }
 } */
 #title .wtleft .count{
-  transform: translateX(60px) translateY(70px) scale(1.5);
+  transform: translateX(245px) translateY(110px) scale(1.2);
   color: #ccc;
+  display: flex;
+  letter-spacing: 15px;
 }
+}
+#title .count span:nth-child(2){
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  display: block;
+/*   animation: border step-end steps(10) 2s infinite; */
+  border-top: 1px solid red;
+
+}
+/* @keyframes border{
+  from{
+      border-top: 1px solid;
+
+  }
+  to{
+    
+  border-top: 1px solid;
+  } */
 #title .wtleft .count .ccount{
   font-size: 15px;
   font-weight: 500;
@@ -73,5 +117,5 @@
   display: none !important;
 }
 #title .more{
-  width: 120px;
+  
 }

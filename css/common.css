@@ -1,4 +1,7 @@
 @charset 'utf-8';
+      html { font-size: 15px; }
+      body { font-size: 1em; }
+      .a { font-size: 1em; }
 .wrap{
     max-width: 1200px;
     margin: 0 auto;
@@ -7,7 +10,8 @@
  font-size: 34px;
 }
 .h2{
-font-size: 30px;
+font-size: 3.2em;
+margin-top: 150px;
 }
 .h3{
 font-size: 26px;
@@ -22,9 +26,8 @@ font-size: 18px;
 font-size: 14px;
 }
 .p{
-font-size;14px;
-    color: #999;
-    font-size: 13px;
+    font-size: 1em;
+    color: #555;
 }
 .small{
     font-size: 11px;
