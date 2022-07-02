@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>(주)윤현몰</title>
+    <title>윤현몰</title>
     <!-- reset -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
     <!-- javascript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- css -->
@@ -26,16 +25,7 @@
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="css/slick-arrow.css">
     <script type="text/javascript" src="js/slick.min.js"></script>
-
-    <!--  PC일 때의 햄버거 버튼 표시  -->
-    <!-- <script>
-        $(function(){
-            $("header .navbar-collapse ul:eq(0) li:eq(0)").remove();
-            $("header .navbar-header button").clone().prependTo("header .navbar-collapse ul:eq(0)");
-            $("header .navbar-collapse ul:eq(0) button").css({"dlsplay":"block","float":"right"});
-        });
-    </script> -->
-<!-- slick start------------------------------------------------------------------------------------------------------>
+    <!-- slick start -->
     <script>
         $(function(){
             $('.tslide').slick({
@@ -43,10 +33,18 @@
                 infinite: true,
                 speed: 2000,
                 slidesToShow: 1,
-                // adaptiveHeight: true,
+                adaptiveHeight: true,
                 arrows:true,
-                autoplay: false,
-                autoplaySpeed: 2000
+                autoplay: true,
+                autoplaySpeed: 2000,
+                responsive: [
+                    {
+                    breakpoint: 769,
+                    settings: {
+                        arrows: false
+                    }
+                    }
+                ]
             });
         });
     </script>
@@ -76,14 +74,16 @@
                     breakpoint: 769,
                     settings: {
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 2,
+                        arrows: false
                     }
                     },
                     {
                     breakpoint: 481,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        arrows: false
                     }
                     }
                 ]
@@ -106,9 +106,17 @@
                     breakpoint: 769,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 3,
-                        infinite: true,
-                        dots: true
+                        slidesToScroll: 1,
+                        dots: true,
+                        arrows: false
+                    }
+                    },
+                    {
+                    breakpoint: 481,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false
                     }
                     }
                 ]
@@ -116,55 +124,76 @@
         });
         </script>
 
-<!-- 스크롤이벤트 aos ------------------------------------------------------------------------------------------------->
-<link href="css/aos.css" rel="stylesheet">
-<script src="js/aos.js"></script>
-<!-- 추천상품 진행바-->
+    <!-- aos -->
+    <link href="css/aos.css" rel="stylesheet">
+    <script src="js/aos.js"></script>
+
+    <!-- 모바일 버전일 때 aos 작동 중지 -->
     <script>
         $(function(){
-    
-            // $(".product,span.more").wrapAll("<div class='wproduct' data-aos='fade-down'></div>");
-            // $(".product").css({"display":"flex","flex-direction":"column-reverse"});
-            // $("#recommand .more").appendTo("#recommand hgroup");
-            // $("#recommand hgrpup").appendTo("data-aos","fade-up");
-            $("#recommand .container").append("<span class='progressbar'></span>");
-            /*
-            $("button.slick-arrow.slick-next").click(function(){
-                $(".progressbar").addClass("full");
+            AOS.init();
+            if($(window).width()>767){
+                $("body").attr("data-aos-duration","1300");
+            }
+            else{
+                $("#recommand hgroup").attr("data-aos","");
+                $(".jumbotron").attr("data-aos","");
+            }
+        });
+    </script>
+    <!-- 타이틀 설명 텍스트 이동시키기 -->
+    <script>
+        $(function(){
+            $("#title .wrap").append("<div class='wtleft'></div>");
+            $(".tslist .tleft").appendTo("#title .wtleft");
+            //슬라이딩 이미지 항목에 맞는 텍스트 보여주기
+            var dnumber = $(".slick-dots .slick-active").index()+1;
+            $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
+            //반복 실행
+            var interV =  setInterval(fn,2000);
+            function fn(){
+                dnumber = $(".slick-dots .slick-active").index()+1;
+                $(".ccount").text(dnumber);
+                $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
+                $("#title .wtleft .tleft").not($("#title .wtleft .tleft"+dnumber)).removeClass("tleftShow");
+                clearInterval(interV);
+                interV =  setInterval(fn,2000);
+            }
+            //마우스 진입 시 멈춤
+            $(".slick-slide").mouseenter(function(){
+                clearInterval(interV);
             });
-            $("button.slick-arrow.slick-prev").click(function(){
-                $(".progressbar").removeClass("full");
-            */   
-// 살려야한다
+            //마우스 벗어나면 재실행
+            $(".slick-slide").mouseleave(function(){
+                interV =  setInterval(fn,0);
+            });
+
+            //타이틀 페이지에 번호로 순서 표기
+            $(".wtleft").prepend("<div class='count'><span class='ccount'></span><span></span><span class='tcount'></span></div>");
+            $(".ccount").text(dnumber);
+            $(".tcount").text(+$(".tslide .slick-dots li").length);
+            //진행바 에니메이션 추가
+            $("#title .count span:nth-child(2)").addClass("countBar");
+        });
+    </script>
+    <!-- 추천상품 진행바 -->
+    <script>
+        $(function(){
+            $("#recommand .container").append("<span class='progressbar'></span>");
+            // 넥스트 버튼 클릭 시 진행바 너비 변경
             $("#recommand button.slick-arrow").click(function(){
                 if($(this).has(".slick-next")){
-                    //$(".progressbar").addClass("full");
                     clearInterval(pBar);
                     cc=$("#recommand .slick-dots .slick-active").index()+1;
                     $("#recommand .progressbar").css("width",n1*cc+"%");
                     cc++;
                 }else{
-                    //$(".progressbar").removeClass("full");
                     clearInterval(pBar);
                     cc=$("#recommand .slick-dots .slick-active").index()+1;
                     $("#recommand .progressbar").css("width",n1*cc+"%");
                     cc--;
                 }
             });
-// 여기까지
-            // v1
-            // var p;
-            // var pBar = setInterval(pb,0);
-            // function pb(){
-            //     p=$("#recommand .slick-dots .slick-active").index();
-            //     if(p==1){
-            //         $(".progressbar").addClass("full");
-            //     }else{
-            //         $(".progressbar").removeClass("full");
-            //     }
-            // }
-
-            //v2
             var cc;
             var dotCount = $("#recommand .slick-dots li").length;
             var n1=100/dotCount;
@@ -187,6 +216,7 @@
                     $("#recommand .progressbar").css("width",n1*cc+"%");
                 }
             }
+            //화면 사이즈 조정 시 진행바 너비 조절
             $(window).resize(function(){
                 dotCount = $("#recommand .slick-dots li").length;
                 n1=100/dotCount;
@@ -211,123 +241,37 @@
                 
                 }
             });
-
-
-            //신상품
-            $("#newarrival a.more").appendTo("#newarrival hgroup");
-    
         });
-    </script>    
-
-<!-- 모바일버전에서 aos 작동안되게 하기 -------------------------------------------------------------------------------->
-<!-- <script>
-    $(function(){
-        AOS.init();
-        if($(window).width()>767){
-            $("body").attr("data-aos-duration","1400");
-            $("#recommand hgroup").attr("data-aos","fade-up");
-            $("#recommand .wproduct").attr("data-aos","fade-down");
-
-        }
-        else{
-            $("#recommand hgroup").attr("data-aos","");
-            $("#recommand .wproduct").attr("data-aos","");
-        }
-    });
-</script> -->
-<!-- ----------------------------------------------------------------------------------------------------------->
-    <script>
-        $(function(){
-//설명 텍스트 이동시키기
-            $("#title .wrap").append("<div class='wtleft'></div>");
-            $(".tslist .tleft").appendTo("#title .wtleft");
-
-            //해당 슬라이딩 이미지 항목에 맞는 텍스트 보여주기
-            var dnumber = $(".slick-dots .slick-active").index()+1;
-            $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
-            
-            //반복 되게 하기
-            /*
-            setInterval(function(){
-                dnumber = $(".slick-dots .slick-active").index()+1;
-                $(".ccount").text(dnumber);
-                $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
-                $("#title .wtleft .tleft").not($("#title .wtleft .tleft"+dnumber)).removeClass("tleftShow");        
-            },4000);
-            */
-           /*
-            setInterval(function(){
-                setInterval(function(){
-                dnumber = $(".slick-dots .slick-active").index()+1;
-                $(".ccount").text(dnumber);
-                $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
-                $("#title .wtleft .tleft").not($("#title .wtleft .tleft"+dnumber)).removeClass("tleftShow");        
-                 },4000);
-            },0);
-            */
-
-            /*
-            var interV =  setInterval(function(){
-                dnumber = $(".slick-dots .slick-active").index()+1;
-                $(".ccount").text(dnumber);
-                $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
-                $("#title .wtleft .tleft").not($("#title .wtleft .tleft"+dnumber)).removeClass("tleftShow");  
-                
-                clearInterval(interV);
-                    interV =  setInterval(function(){
-                    dnumber = $(".slick-dots .slick-active").index()+1;
-                    $(".ccount").text(dnumber);
-                    $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
-                    $("#title .wtleft .tleft").not($("#title .wtleft .tleft"+dnumber)).removeClass("tleftShow");  
-                },2000);
-            },2000);
-            */
-//반복 실행
-            var interV =  setInterval(fn,2000);
-            function fn(){
-                dnumber = $(".slick-dots .slick-active").index()+1;
-                $(".ccount").text(dnumber);
-                $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
-                $("#title .wtleft .tleft").not($("#title .wtleft .tleft"+dnumber)).removeClass("tleftShow");
-                clearInterval(interV);
-                interV =  setInterval(fn,2000);
-            }
-            $(".slick-slide").mouseenter(function(){
-                clearInterval(interV);
-            });
-            $(".slick-slide").mouseleave(function(){
-                interV =  setInterval(fn,0);
-            });
-//페이드인 되는 설명글 번호 배치 .count
-            $(".wtleft").prepend("<div class='count'><span class='ccount'></span><span> - </span><span class='tcount'></span></div>");
-            $(".ccount").text(dnumber);
-            $(".tcount").text($(".slick-dots li").length);
-        });
-    </script>
-<!-- slick end ------------------------------------------------------------------------------------------------------->
+    </script>  
 </head>
 
-<body data-aos-duration="1350">
+<body>
     <!-- 상단영역 -->
     <header>
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <h1 class="navbar-brand"><a href="">YOUNHYUN MALL</a></h1>
+                    <button type="button" class="navbar-toggle collapsed">
+                        <span class="sr-only">메뉴 보기</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-                <div class="navwrap">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li><a href=""><span>전체메뉴</span></a></li>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav-left nav navbar-nav">
+                        <li><a href=""><span></span></a></li>
                         <li><a href="">추천제품</a></li>
                         <li><a href="">신제품</a></li>
                         <li><a href="">이벤트</a></li>
-                        <!-- <li><a href="">PREMIUM</a></li> -->
+                        <li><a href="">PREMIUM</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="">LOGIN</a></li>
                         <li><a href="">JOIN</a></li>
                         <li><a href="">CART</a></li>
-                        <li><a href=""><span class="glyphicon glyphicon-search" role="search"></a></span></li>
+                        <li><a href="" role="search"></a></li>
                     </ul>
                 </div>
             </div>
@@ -381,17 +325,15 @@
             </ul>
         </div>
     </div>
-<!-- 메인영역 -->
+    <!-- 메인영역 -->
     <main>
         <!-- 추천상품 -->
         <section id="recommand" class="padding-40">
             <div class="wrap container" >
-                <hgroup class="data-aos="fade-down>
+                <hgroup data-aos="fade-up">
                     <h2 class="h2 text-center">RECOMMEND PRODUCTS</h2>
                     <h3 class="h3 text-center">윤현상재가 선정한 추천제품</h3>
-                    <span class="more">
-                        <a href="" class="">MORE</a>
-                    </span>
+                    <span class="more"><a href="" class="">MORE</a></span>
                 </hgroup>
                 <ul class="product text-center">
                     <li>
@@ -463,23 +405,24 @@
         </section>    
         <!-- 타일샘플 -->
         <section id="sample" class="padding-100">
-            <div class="container jumbotron" >
+            <div class="container jumbotron" data-aos="fade-up">
                 <h2 class="hide">타일샘플</h2>
                 <p class="h3">방문이 어려우신가요?<span class="block">집에서 타일샘플을 받아보세요.</span></p>
             </div>
         </section>
         <!-- 신상품 -->
-        <section id="newarrival" class="padding-40">
+        <section id="newarrival" class="padding-100">
             <div class="wrap container row">
                 <hgroup class="col-md-3 col-sm-12 col-xs-12">
                     <h2 class="h5">NEW ARRIVAL</h2>
                     <h3 class="h3">새롭게 소개해<span class="block"></span>드리는 신제품</h3>
+                    <a href="" class="more">MORE</a>
                 </hgroup>
                 <ul class="newproduct col-md-9 col-sm-12 col-xs-12">
                     <li>
                         <a href="" class="block">
                             <img src="img/new1.jpg" alt="" class="img-responsive">
-                            <h4 class="h5">REGOLOTTO<span class="h6">레골로또</span></h4>
+                            <h4 class="h5">REGOLOTTO<span class="h6 block">레골로또</span></h4>
                             <p class="p"><span>box</span>100,000원</p>
                             <p class="p"><span>1m</span>82000월</p>
                         </a>
@@ -487,7 +430,7 @@
                     <li>
                         <a href="" class="block">
                             <img src="img/new2.jpg" alt="" class="img-responsive">
-                            <h4 class="h5">MYSTIC<span class="h6">미스틱 베이지</span></h4>
+                            <h4 class="h5">MYSTIC<span class="h6 block">미스틱 베이지</span></h4>
                             <p class="p"><span>box</span>100,000원</p>
                             <p class="p"><span>1m</span>82000월</p>
                         </a>
@@ -495,7 +438,7 @@
                     <li>
                         <a href="" class="block">
                             <img src="img/new3.jpg" alt="" class="img-responsive">
-                            <h4 class="h5">SILKY STONE LIGHT<span class="h6">실키 스톤 라이트</span></h4>
+                            <h4 class="h5">SILKY STONE LIGHT<span class="h6 block">실키 스톤 라이트</span></h4>
                             <p class="p"><span>box</span>100,000원</p>
                             <p class="p"><span>1m</span>82000월</p>
                         </a>
@@ -503,7 +446,7 @@
                     <li>
                         <a href="" class="block">
                             <img src="img/new4.jpg" alt="" class="img-responsive">
-                            <h4 class="h5">454COTTO<span class="h6">454 코토</span></h4>
+                            <h4 class="h5">454COTTO<span class="h6 block">454 코토</span></h4>
                             <p class="p"><span>box</span>100,000원</p>
                             <p class="p"><span>1m</span>82000월</p>
                         </a>
@@ -511,7 +454,7 @@
                     <li>
                         <a href="" class="block">
                             <img src="img/new5.jpg" alt="" class="img-responsive">
-                            <h4 class="h5">NARVIKWHITE<span class="h6">나르비크 화이트</span></h4>
+                            <h4 class="h5">NARVIKWHITE<span class="h6 block">나르비크 화이트</span></h4>
                             <p class="p"><span>box</span>100,000원</p>
                             <p class="p"><span>1m</span>82000월</p>
                         </a>
@@ -519,7 +462,7 @@
                     <li>
                         <a href="" class="block">
                             <img src="img/new6.jpg" alt="" class="img-responsive">
-                            <h4 class="h5">LASTRA A<span class="h6">라스트라 에이</span></h4>
+                            <h4 class="h5">LASTRA A<span class="h6 block">라스트라 에이</span></h4>
                             <p class="p"><span>box</span>100,000원</p>
                             <p class="p"><span>1m</span>82000월</p>
                         </a>
@@ -527,7 +470,7 @@
                     <li>
                         <a href="" class="block">
                             <img src="img/new7.jpg" alt="" class="img-responsive">
-                            <h4 class="h5">SLATE WHITE<span class="h6">슬레이트 화이트</span></h4>
+                            <h4 class="h5">SLATE WHITE<span class="h6 block">슬레이트 화이트</span></h4>
                             <p class="p"><span>box</span>100,000원</p>
                             <p class="p"><span>1m</span>82000월</p>
                         </a>
@@ -535,13 +478,12 @@
                     <li>
                         <a href="" class="block">
                             <img src="img/new8.jpg" alt="" class="img-responsive">
-                            <h4 class="h5">NST IVORY<span class="h6">엔에스티 아이보리</span></h4>
+                            <h4 class="h5">NST IVORY<span class="h6 block">엔에스티 아이보리</span></h4>
                             <p class="p"><span>box</span>100,000원</p>
                             <p class="p"><span>1m</span>82000월</p>
                         </a>
                     </li>
                 </ul>
-                <a href="" class="more btn btn-default">MORE</a>
             </div>
         </section> 
         <!-- 유투브 -->
@@ -549,6 +491,8 @@
             <div class="wrap container">
                 <h2 class="h3">YouTube 윤현상재</h2>
                 <iframe width="1580" height="888" src="https://www.youtube.com/embed/TGiZ8UcZTEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </section>
+    </main>
     <!-- 하단영역 -->
     <footer class="padding-40">
         <div class="wrap container">
@@ -565,7 +509,7 @@
                         COPYRIGHTⓒ YOUNHYUN TRANDING. ALL RIGHTS RESERVED.<br>
                         HOSTING BY NHN COMMERCE. 
                     </p>
-                    <span class="col-md-12"><a href="">유투브</a><a href="">유투브오피셜</a><a href="">카카오톡</a></span>
+                    <span class="sns"><a href="">유투브</a><a href="">유투브오피셜</a><a href="">카카오톡</a></span>
                 </div>
                 <div class="center col-md-3">
                     <h2 class="h5">고객센터</h2>
@@ -573,7 +517,7 @@
                     <p class="p">평일 오전 9시 - 오후 6시</p>
                     <p class="p"> 토요일 및 공휴일 오전 9시 - 오후 5시</p>
                     <p class="p">일요일 휴무</p>
-                    <span><a href="" class="btn btn-default">카카오톡 문의</a><a href="" class="btn btn-default">1:1문의</a></span>
+                    <span><a href="" class="">카카오톡 문의</a><a href="" class="">1:1문의</a></span>
                 </div>
                 <ul class="right col-md-4">
                     <li class="col-md-12 col-lg-6">
@@ -607,9 +551,6 @@
                 </select>
             </div>
         </div>
-    </footer>
-    <footer>
-
     </footer>
 </body>
 </html>
