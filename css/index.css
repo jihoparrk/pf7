@@ -1,0 +1,214 @@
+/* 추천상품 */
+#recommand {
+  height: 100%;
+}
+#recommand .wrap {
+}
+#recommand hgroup {
+  margin-bottom: 100px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#recommand hgroup h2{
+  font-size: 17px;
+  color: #CA4444;
+}
+#recommand hgroup h3 {
+  
+}
+#recommand hgroup span{
+}
+#recommand hgroup a{
+  width: 150px;
+  display: block;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid;
+  color: #999;
+  line-height: 2.5;
+  letter-spacing: 3px;
+}
+#recommand hgroup a::after{
+  content: "";
+  border: 1px solid #999;
+  border-left: transparent;
+  border-bottom: transparent;
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  transform: rotate(45deg);
+}
+#recommand ul {
+  
+}
+#recommand ul li {
+  
+}
+#recommand ul li a ,#bestproduct ul li a {
+  padding: 10px;
+  box-sizing: border-box;
+}
+#recommand ul li a img {
+
+}
+#recommand ul li a h4,#bestproduct ul li a h4 {
+  font-size: 17px;
+  color: #000;
+  margin-top: 30px;
+}
+#recommand ul li a h4 span {
+  font-size: 15px;
+  line-height: 5;
+}
+#recommand ul li a p {
+  
+}
+#recommand ul li a p span {
+  width: 43px;
+  border: 1px solid;
+  display: inline-block;
+  padding: 1px 5px;
+  margin-right: 10px;
+  color: #CA4444;
+  font-size: 13px;
+}
+#recommand .wrap > a {
+  
+}
+#recommand .slick-dots li{
+  opacity: 0;
+}
+.re100{
+  width: 100% !important;
+}
+#recommand .more,#bestproduct .more{
+  display: block;
+  text-align: center;
+  margin: 30px;
+}
+#recommand .more span{
+  width: 100%;
+  text-align: center;
+}
+
+.progressbar{
+  display: block;
+  width: 50%;
+  border-top: 3px solid;
+  transition: all 0.5s;
+}
+/* 타일 */
+#sample{
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+#sample .container{
+  background-image: url(../img/tile.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
+  height: 200px;
+  padding-left: 40px;
+  width: 983px;
+}
+/* newarrival */
+#newarrival {
+}
+#newarrival .wrap {
+}
+#newarrival hgroup {
+  margin-bottom: 50px;
+}
+#newarrival hgroup h2 {
+  color: #CA4444;
+  letter-spacing: 1px;
+}
+#newarrival hgroup h3 {
+  margin-bottom: 50px;
+}
+#newarrival hgroup a{
+  width: 150px;
+  display: block;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid;
+  color: #999;
+  line-height: 2.5;
+  letter-spacing: 3px;
+}
+#newarrival hgroup a::after{
+  content: "";
+  border: 1px solid #999;
+  border-left: transparent;
+  border-bottom: transparent;
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  transform: rotate(45deg);
+}
+#newarrival ul {
+  
+}
+#newarrival ul li {
+  padding: 0 10px;
+}
+#newarrival ul li a {
+  box-shadow: 0 2px 3px #d0c5c5;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+}
+#newarrival ul li a img {  
+}
+#newarrival ul li a h4 {
+  margin-left: 20px;
+  color: #000;
+  line-height: 3;
+}
+#newarrival ul li a h4 span {
+  
+}
+#newarrival ul li a p {
+  margin-left: 20px;
+}
+#newarrival ul li a p span {
+  width: 50px;
+  border: 1px solid;
+  display: inline-block;
+  padding: 1px 15px;
+  margin-right: 10px;
+  color: #CA4444;
+  font-size: 13px;
+}
+
+/* 유투브 */
+#youtube{
+
+}
+#youtube .wrap{
+margin-bottom: 100px;
+}
+#youtube h2{
+  font-size: 15px;
+  color: #999;
+}
+#youtube iframe{
+  width: 100%;
+  height: 658px;
+}
+/* 신제품 */
+@media screen and (min-width:992px){
+  #newarrival .wrap{
+    width: 92%;
+  }
+
+}
+@media screen and (max-width:768px){
+  #recommand ul li a img {
+    margin: 0 auto;
+    width: 85%;
+  }
+}

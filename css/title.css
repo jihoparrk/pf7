@@ -1,0 +1,98 @@
+#title .tslide{
+  width: 97%;
+  margin: 0 auto;
+}
+#title .container{
+  margin-top: 100px;
+  position: relative;
+}
+#title .tslist{
+  position: relative;
+  padding-left: 280px;
+  padding-right: 0;
+}
+#title .wtleft{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+#title .wtleft .tleft{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: max-content;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 1s;
+  opacity: 0;
+}
+#title .wtleft .tleft p{
+  line-height: 5;
+  margin-bottom: 40px;
+}
+#title .wtleft .tleft a{
+  width: 150px;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid;
+  color: #999;
+  line-height: 2.5;
+  letter-spacing: 3px;
+}
+#title .wtleft .tleft a::after{
+  content: "";
+  border: 1px solid #999;
+  border-left: transparent;
+  border-bottom: transparent;
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  transform: rotate(45deg);
+}
+.tleftShow{
+  opacity: 1 !important;
+  left: 60px !important;
+  z-index: 1;
+}
+#title .count{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  font-size: 15px;
+  width: 150px;
+  position: relative;
+  top: 30%;
+  left: 60px;
+}
+#title .count span:nth-child(2){
+  display: block;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  left:25px;
+}
+#title .ccount{
+  padding: 7px;
+}
+#title .tcount{
+  padding: 7px;
+}
+.slick-dots{
+  display: none !important;
+}
+.countBar{
+  animation: border 4s infinite;
+}
+@keyframes border{
+  0%{
+    width: 0;
+  }
+  100%{
+    background-color: #000;
+    width: 100px;
+  }
+}
