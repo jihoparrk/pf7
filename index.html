@@ -146,9 +146,12 @@
         $(function(){
             $("#title .wrap").append("<div class='wtleft'></div>");
             $(".tslist .tleft").appendTo("#title .wtleft");
+            $("#title .wtleft .tleft").prepend("<div class='count'><span class='ccount'></span><span></span><span class='tcount'></span></div>");
             //슬라이딩 이미지 항목에 맞는 텍스트 보여주기
             var dnumber = $(".slick-dots .slick-active").index()+1;
             $("#title .wtleft .tleft"+dnumber).addClass("tleftShow");
+            //진행바 에니메이션 추가
+            $("#title .count span:nth-child(2)").addClass("countBar");
             //반복 실행
             var interV =  setInterval(fn,2000);
             function fn(){
@@ -162,18 +165,18 @@
             //마우스 진입 시 멈춤
             $(".slick-slide").mouseenter(function(){
                 clearInterval(interV);
+                $(".countBar").css("animation-play-state","paused");
             });
             //마우스 벗어나면 재실행
             $(".slick-slide").mouseleave(function(){
                 interV =  setInterval(fn,0);
+                $(".countBar").css("animation-play-state","running");
+                
             });
-
             //타이틀 페이지에 번호로 순서 표기
-            $(".wtleft").prepend("<div class='count'><span class='ccount'></span><span></span><span class='tcount'></span></div>");
             $(".ccount").text(dnumber);
             $(".tcount").text(+$(".tslide .slick-dots li").length);
-            //진행바 에니메이션 추가
-            $("#title .count span:nth-child(2)").addClass("countBar");
+            
         });
     </script>
     <!-- 추천상품 진행바 -->
@@ -285,15 +288,15 @@
                     <img src="img/title-1.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft1">
                         <h2 class="h2">MOONSTONE WHITE</h2>
-                        <p class="p">자연스러운 스톤 패턴과 견고함, 문스톤 화이트</p>
-                        <a href="" class="more">more</a>
+                        <p class="">자연스러운 스톤 패턴과 견고함, 문스톤 화이트</p>
+                        <a href="" class="">more</a>
                     </div>
                 </li>
                 <li class="tslist t2">
                     <img src="img/title-2.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft2">
-                        <h2 class="h2">GROUND WALL LIGHT TIP</span></h2>
-                        <p class="p">포인트로 사용하기 좋은 입체타일, 그라운드 월 라이트 팁</p>
+                        <h2 class="h2">TUNE SNOW SOFT</h2>
+                        <p class="p">눈처럼 부드러운 색과 표면, 튠스노우 소프트</p>
                         <a href="" class="">more</a>
                     </div>
                 </li>
@@ -305,7 +308,6 @@
                         <a href="" class="">more</a>
                     </div>
                 </li>
-                
                 <li class="tslist t4">
                     <img src="img/title-4.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft4">
@@ -317,8 +319,8 @@
                 <li class="tslist t5">
                     <img src="img/title-5.jpg" class="img-responsive" alt="">
                     <div class="tleft tleft5">
-                        <h2 class="h2">TUNE SNOW SOFT</h2>
-                        <p class="p">눈처럼 부드러운 색과 표면, 튠스노우 소프트</p>
+                        <h2 class="h2">GROUND WALL LIGHT TIP</span></h2>
+                        <p class="p">포인트로 사용하기 좋은 입체타일, 그라운드 월 라이트 팁</p>
                         <a href="" class="">more</a>
                     </div>
                 </li>
@@ -513,7 +515,7 @@
                 </div>
                 <div class="center col-md-3">
                     <h2 class="h5">고객센터</h2>
-                    <p class="h1">1855-0145</p>
+                    <p class="">1855-0145</p>
                     <p class="p">평일 오전 9시 - 오후 6시</p>
                     <p class="p"> 토요일 및 공휴일 오전 9시 - 오후 5시</p>
                     <p class="p">일요일 휴무</p>
