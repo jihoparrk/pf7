@@ -74,13 +74,13 @@ footer .left span.sns a:nth-child(3){
 }
 footer .center{
 }
-footer .center p{
+footer .center p:nth-child(2){
   line-height: 1.6;
+  font-size: 2.5vw;
 }
 footer .center span{
   display: flex;
-  width: max-content;
-  justify-content: space-between;
+  width: 100%;
 }
 footer .center span a{
   width: 110px;
@@ -92,6 +92,7 @@ footer .center span a{
   border: 1px solid ;
   font-size: 10px;
   margin-right: 5px;
+  box-sizing: border-box;
 }
 footer .down select{
   float: right;

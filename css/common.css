@@ -7,14 +7,12 @@
     margin: 0 auto;
 }
 .h1{
- font-size: 34px;
 }
 .h2{
-font-size: 3.2vw;
-margin-top: 150px;
+    font-size: 3.7vw;
+    line-height: 7vw;
 }
 .h3{
-font-size: 26px;
 }
 .h4{
 font-size: 22px;
@@ -26,7 +24,6 @@ font-size: 18px;
 font-size: 14px;
 }
 .p{
-    font-size: 1vw;
     color: #555;
 }
 .small{

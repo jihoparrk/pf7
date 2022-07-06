@@ -1,9 +1,13 @@
+#title .wrap{
+  height: 100%;
+}
 #title .tslide{
   width: 97%;
   margin: 0 auto;
 }
 #title .container{
   margin-top: 100px;
+  margin-bottom: 100px;
   position: relative;
 }
 #title .tslist{
@@ -30,8 +34,8 @@
   opacity: 0;
 }
 #title .wtleft .tleft p{
-  line-height: 5;
-  margin-bottom: 40px;
+font-size: 1.5vw;
+margin-bottom: 30px;
 }
 #title .wtleft .tleft a{
   width: 150px;
@@ -64,9 +68,6 @@
   color: #000;
   font-size: 15px;
   width: 150px;
-  position: relative;
-  top: 30%;
-  left: 60px;
 }
 #title .count span:nth-child(2){
   display: block;
@@ -91,8 +92,11 @@
   0%{
     width: 0;
   }
-  100%{
-    background-color: #000;
+  50%{
     width: 100px;
+    background-color: #000;
+  }
+  100%{
+    width: 0;
   }
 }
